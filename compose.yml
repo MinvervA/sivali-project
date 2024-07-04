@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  talent-match-api:
+    container_name: talent-match-api
+    image: backend
+    build:
+      context: ./server
+      dockerfile: server.dockerfile
+    ports:
+      - "4000:4000"
+    environment: 
+      DATABASE_USERNAME : postgres
+      DATABASE_PASSWORD : postgres
+      DATABASE_NAME : talent-match
+      DATABASE_HOST : talent-match-db
+      DATABASE_DIALECT : postgres
+      DATABASE_TIMEZONE : +07:00
+      DATABASE_PORT : 5432
+  talent-match-db:
+    container_name: talent-match-db
+    image: postgres
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: talent-match
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
