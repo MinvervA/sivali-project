@@ -2,27 +2,30 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('jobs_leaves', {
+    await queryInterface.createTable('employers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      full_name: {
+      name: {
         type: Sequelize.STRING
       },
-      date: {
+      email: {
         type: Sequelize.STRING
       },
-      time: {
+      phone_number: {
         type: Sequelize.STRING
       },
-      description: {
+      position: {
         type: Sequelize.STRING
       },
-      status: {
+      balance: {
         type: Sequelize.STRING
+      },
+      is_active: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('jobs_leaves');
+    await queryInterface.dropTable('employers');
   }
 };

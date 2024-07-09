@@ -3,24 +3,26 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class employee_balance_history extends Model {
+  class job_leave extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate(job) {
       // define association here
+      this.belongsToMany(job, {foreignKey: "job_id"})
     }
   }
-  employee_balance_history.init({
+  job_leave.init({
+    full_name: DataTypes.STRING,
+    date: DataTypes.STRING,
+    time: DataTypes.STRING,
     description: DataTypes.STRING,
-    amount: DataTypes.STRING,
-    starting_balance: DataTypes.STRING,
-    ending_balance: DataTypes.STRING
+    status: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'employee_balance_history',
+    modelName: 'job_leave',
   });
-  return employee_balance_history;
+  return job_leave;
 };

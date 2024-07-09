@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('employer_transactions', {
+    await queryInterface.createTable('employer_balance_histories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,13 +12,13 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      is_active: {
-        type: Sequelize.BOOLEAN
-      },
-      date_purchased: {
+      amount: {
         type: Sequelize.STRING
       },
-      date_expired: {
+      starting_balance: {
+        type: Sequelize.STRING
+      },
+      ending_balance: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('employer_transactions');
+    await queryInterface.dropTable('employer_balance_histories');
   }
 };

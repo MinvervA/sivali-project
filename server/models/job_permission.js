@@ -3,17 +3,18 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class jobs_overtime extends Model {
+  class jobs_permission extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate(job) {
       // define association here
+      this.belongsTo(job, {foreignKey: "job_id"})
     }
   }
-  jobs_overtime.init({
+  jobs_permission.init({
     full_name: DataTypes.STRING,
     date: DataTypes.STRING,
     time: DataTypes.STRING,
@@ -21,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'jobs_overtime',
+    modelName: 'jobs_permission',
   });
-  return jobs_overtime;
+  return jobs_permission;
 };
