@@ -2,26 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('jobs_overtimes', {
+    await queryInterface.createTable('user_job_offers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      full_name: {
+      job_name: {
         type: Sequelize.STRING
       },
-      date: {
+      employer: {
         type: Sequelize.STRING
       },
-      time: {
+      date_start: {
         type: Sequelize.STRING
       },
-      description: {
+      date_end: {
         type: Sequelize.STRING
       },
-      status: {
+      shift_start: {
+        type: Sequelize.STRING
+      },
+      shift_end: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      salary: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -35,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('jobs_overtimes');
+    await queryInterface.dropTable('user_job_offers');
   }
 };

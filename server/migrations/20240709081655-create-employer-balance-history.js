@@ -2,26 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('job_izins', {
+    await queryInterface.createTable('employer_balance_histories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      full_name: {
-        type: Sequelize.STRING
-      },
-      date: {
-        type: Sequelize.STRING
-      },
-      time: {
-        type: Sequelize.STRING
-      },
       description: {
         type: Sequelize.STRING
       },
-      status: {
+      amount: {
+        type: Sequelize.STRING
+      },
+      starting_balance: {
+        type: Sequelize.STRING
+      },
+      ending_balance: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -35,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('job_izins');
+    await queryInterface.dropTable('employer_balance_histories');
   }
 };

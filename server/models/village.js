@@ -3,21 +3,22 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class jobs_type extends Model {
+  class village extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate(district) {
       // define association here
+      this.belongsToMany(district, {foreignKey: "district_id"})
     }
   }
-  jobs_type.init({
+  village.init({
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'jobs_type',
+    modelName: 'village',
   });
-  return jobs_type;
+  return village;
 };

@@ -2,26 +2,47 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('jobs_leaves', {
+    await queryInterface.createTable('job_attendance_lists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      full_name: {
+      name: {
         type: Sequelize.STRING
       },
       date: {
         type: Sequelize.STRING
       },
-      time: {
+      shift_in: {
         type: Sequelize.STRING
       },
-      description: {
+      shift_out: {
         type: Sequelize.STRING
       },
-      status: {
+      check_in: {
+        type: Sequelize.STRING
+      },
+      check_out: {
+        type: Sequelize.STRING
+      },
+      job_name: {
+        type: Sequelize.STRING
+      },
+      job_description: {
+        type: Sequelize.STRING
+      },
+      location_in: {
+        type: Sequelize.STRING
+      },
+      location_out: {
+        type: Sequelize.STRING
+      },
+      photo_in: {
+        type: Sequelize.STRING
+      },
+      photo_out: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -35,6 +56,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('jobs_leaves');
+    await queryInterface.dropTable('job_attendance_lists');
   }
 };
