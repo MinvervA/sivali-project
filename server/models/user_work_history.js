@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class user_work_history extends Model {
     /**
@@ -9,20 +7,23 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(user) {
+    static associate({ user }) {
       // define association here
-      this.belongsToMany(user, {foreignKey: "user_id"})
+      // this.belongsTo(user, { foreignKey: "user_id" });
     }
   }
-  user_work_history.init({
-    job_name: DataTypes.STRING,
-    date_start: DataTypes.STRING,
-    date_end: DataTypes.STRING,
-    salary: DataTypes.STRING,
-    employer: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'user_work_history',
-  });
+  user_work_history.init(
+    {
+      job_name: DataTypes.STRING,
+      date_start: DataTypes.STRING,
+      date_end: DataTypes.STRING,
+      salary: DataTypes.STRING,
+      employer: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "user_work_history",
+    }
+  );
   return user_work_history;
 };
