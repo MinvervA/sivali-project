@@ -1,26 +1,25 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class user_notification extends Model {
+  class village extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ user }) {
+    static associate({ district }) {
       // define association here
-      this.belongsTo(user, { foreignKey: "user_id" });
+      this.belongsTo(district, { foreignKey: "district_id" });
     }
   }
-  user_notification.init(
+  village.init(
     {
-      topic: DataTypes.STRING,
-      message: DataTypes.STRING,
+      name: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "user_notification",
+      modelName: "village",
     }
   );
-  return user_notification;
+  return village;
 };

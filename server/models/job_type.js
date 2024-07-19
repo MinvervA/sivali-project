@@ -1,26 +1,25 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class user_notification extends Model {
+  class job_type extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ user }) {
+    static associate({ job }) {
       // define association here
-      this.belongsTo(user, { foreignKey: "user_id" });
+      this.hasMany(job, { foreignKey: "type_id" });
     }
   }
-  user_notification.init(
+  job_type.init(
     {
-      topic: DataTypes.STRING,
-      message: DataTypes.STRING,
+      name: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "user_notification",
+      modelName: "job_type",
     }
   );
-  return user_notification;
+  return job_type;
 };
