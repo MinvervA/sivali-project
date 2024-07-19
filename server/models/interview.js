@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ user, employer, job }) {
       // define association here
-      // this.belongsTo(employer, { foreignKey: "employer_id" });
-      // this.belongsTo(user, { foreignKey: "user_id" });
-      // this.belongsTo(job, { foreignKey: "job_id" });
+      this.belongsTo(employer, { foreignKey: "employer_id" });
+      this.belongsTo(user, { foreignKey: "user_id" });
+      this.belongsTo(job, { foreignKey: "job_id" });
     }
   }
   interview.init(

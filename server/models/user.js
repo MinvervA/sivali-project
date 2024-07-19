@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const job_overtime = require("./job_overtime");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -21,17 +22,18 @@ module.exports = (sequelize, DataTypes) => {
       interview,
     }) {
       // define association here
-      // this.hasMany(user_notification, { foreignKey: "user_id" });
-      // this.hasMany(user_balance_history, { foreignKey: "user_id" });
-      // this.hasMany(user_experience, { foreignKey: "user_id" });
-      // this.hasMany(user_expertise, { foreignKey: "user_id" });
-      // this.hasMany(interview, { foreignKey: "user_id" });
-      // this.hasMany(user_job_offer, { foreignKey: "user_id" });
-      // this.hasMany(user_work_history, { foreignKey: "user_id" });
-      // this.hasOne(user_bank_information, { foreignKey: "user_id" });
-      // this.hasOne(user_file, { foreignKey: "user_id" });
-      // this.hasOne(user_education, { foreignKey: "user_id" });
-      // this.hasOne(user_emergency_contact, { foreignKey: "user_id" });
+      this.hasMany(user_notification, { foreignKey: "user_id" });
+      this.hasMany(user_balance_history, { foreignKey: "user_id" });
+      this.hasMany(user_experience, { foreignKey: "user_id" });
+      this.hasMany(user_expertise, { foreignKey: "user_id" });
+      this.hasMany(interview, { foreignKey: "user_id" });
+      this.hasMany(user_job_offer, { foreignKey: "user_id" });
+      this.hasMany(user_work_history, { foreignKey: "user_id" });
+      this.hasOne(user_bank_information, { foreignKey: "user_id" });
+      this.hasOne(user_file, { foreignKey: "user_id" });
+      this.hasOne(user_education, { foreignKey: "user_id" });
+      this.hasOne(user_emergency_contact, { foreignKey: "user_id" });
+      this.hasMany(job_overtime, {foreignKey: "user_id"});
     }
   }
   user.init(

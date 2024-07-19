@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ company, employer_transaction, employer_balance_history, interview }) {
       // define association here
-      // this.hasOne(company, { foreignKey: "employer_id" });
-      // this.hasMany(interview, { foreignKey: "employer_id" });
-      // this.hasMany(employer_balance_history, { foreignKey: "employer_id" });
-      // this.hasMany(employer_transaction, { foreignKey: "employer_id" });
+      this.hasOne(company, { foreignKey: "employer_id" });
+      this.hasMany(interview, { foreignKey: "employer_id" });
+      this.hasMany(employer_balance_history, { foreignKey: "employer_id" });
+      this.hasMany(employer_transaction, { foreignKey: "employer_id" });
     }
   }
   employer.init(
