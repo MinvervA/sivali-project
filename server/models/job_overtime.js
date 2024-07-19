@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ job }) {
       // define association here
-      // this.belongsTo(job, { foreignKey: "job_id" });
+      this.belongsTo(job, { foreignKey: "job_id" });
+      this.belongsTo(user, {foreignKey: "user_id"})
     }
   }
   job_overtime.init(

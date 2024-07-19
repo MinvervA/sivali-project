@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ employer }) {
       // define association here
-      // this.belongsTo(employer, { foreignKey: "employer_id" });
+      this.belongsTo(employer, { foreignKey: "employer_id" });
     }
   }
   employer_balance_history.init(

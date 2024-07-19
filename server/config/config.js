@@ -7,6 +7,7 @@ const {
   DATABASE_NAME,
   DATABASE_DIALECT,
   DATABASE_TIMEZONE,
+  DATABASE_PORT
 } = process.env;
 
 const config = {
@@ -15,6 +16,7 @@ const config = {
   database: DATABASE_NAME,
   host: DATABASE_HOST,
   dialect: DATABASE_DIALECT,
+  port: DATABASE_PORT,
   timezone: DATABASE_TIMEZONE,
 };
 
