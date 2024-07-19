@@ -5,8 +5,8 @@ const db = require("./models");
 const PORT = 4000;
 const cors = require("cors");
 const Sequelize = require("sequelize");
-const config = require('./config/config.js');
-const env = process.env.NODE_ENV || 'development';
+const config = require("./config/config.js");
+const env = process.env.NODE_ENV || "development";
 
 app.use(cors());
 
@@ -16,40 +16,45 @@ console.log("Environment Variables:", {
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
   DATABASE_HOST: process.env.DATABASE_HOST,
   DATABASE_DIALECT: process.env.DATABASE_DIALECT,
+  DATABASE_PORT: process.env.DATABASE_PORT,
 });
 // Konfigurasi database
-const sequelize = new Sequelize(
-  config[env].database,
-  config[env].username,
-  config[env].password,
-  {
-    host: config[env].host,
-    port: config[env].port, // Gunakan port dari konfigurasi
-    dialect: config[env].dialect,
-    timezone: config[env].timezone
-  }
-);
-
+const sequelize = new Sequelize(config[env].database, config[env].username, config[env].password, {
+  host: config[env].host,
+  port: config[env].port, // Gunakan port dari konfigurasi
+  dialect: config[env].dialect,
+  timezone: config[env].timezone,
+});
+// console.log(sequelize);
+// Autentikasi ke database
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/city",async(req,res)=>{
+app.get("/city", async (req, res) => {
   try {
-    const cities = await db.city.findAll()
+    const cities = await db.city.findAll();
 
-    res.send(cities)
+    res.send(cities);
   } catch (error) {
-    res.send(error)
+    res.send(error);
   }
-})
+});
 
 app.listen(PORT, (err) => {
   if (err) {
     console.log(`ERROR:${err}`);
   } else {
     // db.sequelize.sync({
-    // 	alter: true,
+    //   alter: true,
     // });
     console.log(`APP RUNNING at ${PORT} ✅`);
   }
