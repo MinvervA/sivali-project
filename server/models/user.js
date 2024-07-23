@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       user_experience,
       user_expertise,
       interview,
+      job_overtime
     }) {
       // define association here
       this.hasMany(user_notification, { foreignKey: "user_id" });
