@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       user_experience,
       user_expertise,
       interview,
-      job_overtime
+      job_overtime,
     }) {
       // define association here
       this.hasMany(user_notification, { foreignKey: "user_id" });
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(user_file, { foreignKey: "user_id" });
       this.hasOne(user_education, { foreignKey: "user_id" });
       this.hasOne(user_emergency_contact, { foreignKey: "user_id" });
-      this.hasMany(job_overtime, {foreignKey: "user_id"});
+      this.hasMany(job_overtime, { foreignKey: "user_id" });
     }
   }
   user.init(
@@ -53,6 +53,14 @@ module.exports = (sequelize, DataTypes) => {
       address: DataTypes.STRING,
       domicile: DataTypes.STRING,
       balance: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,
