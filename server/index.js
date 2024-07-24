@@ -49,6 +49,17 @@ app.get("/city", async (req, res) => {
   }
 });
 
+app.use((err, req, res, next) => {
+  const statusCode = err.status || 500;
+  const statusMessage = err.message || "Error";
+
+  return res.status(statusCode).send({
+    isError: true,
+    message: statusMessage,
+    data: null,
+  });
+});
+
 app.listen(PORT, (err) => {
   if (err) {
     console.log(`ERROR:${err}`);
