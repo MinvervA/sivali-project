@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
       time: DataTypes.STRING,
       location: DataTypes.STRING,
       position: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,
