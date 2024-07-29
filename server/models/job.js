@@ -52,6 +52,14 @@ module.exports = (sequelize, DataTypes) => {
       job_shift_out: DataTypes.STRING,
       shift_quota: DataTypes.STRING,
       is_active: DataTypes.BOOLEAN,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,

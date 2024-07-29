@@ -18,6 +18,14 @@ module.exports = (sequelize, DataTypes) => {
       amount: DataTypes.STRING,
       starting_balance: DataTypes.STRING,
       ending_balance: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,

@@ -9,6 +9,7 @@ const config = require("./config/config.js");
 const env = process.env.NODE_ENV || "development";
 
 app.use(cors());
+app.use(express.json());
 
 console.log("Environment Variables:", {
   DATABASE_NAME: process.env.DATABASE_NAME,
@@ -35,6 +36,11 @@ sequelize
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
+
+const { userRouter } = require("./routes");
+
+app.use("/user", userRouter);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -64,9 +70,9 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log(`ERROR:${err}`);
   } else {
-    db.sequelize.sync({
-      alter: true,
-    });
+    // db.sequelize.sync({
+    //   alter: true,
+    // });
     console.log(`APP RUNNING at ${PORT} ✅`);
   }
 });

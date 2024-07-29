@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       cv_name: DataTypes.STRING,
       file_name: DataTypes.STRING,
       description: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,

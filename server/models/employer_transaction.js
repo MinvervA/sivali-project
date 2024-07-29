@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ employer, service_pack }) {
       // define association here
-      this.belongsTo(employer, {foreignKey: "employer_id"});
+      this.belongsTo(employer, { foreignKey: "employer_id" });
       this.belongsTo(service_pack, { foreignKey: "service_pack_id" });
     }
   }
@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
       is_active: DataTypes.BOOLEAN,
       date_purchased: DataTypes.STRING,
       date_expired: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,

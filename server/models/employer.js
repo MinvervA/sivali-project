@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
       position: DataTypes.STRING,
       balance: DataTypes.STRING,
       isActive: DataTypes.BOOLEAN,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,
