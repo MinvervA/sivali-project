@@ -13,10 +13,12 @@ module.exports = {
 
     verify: (req, res, next) => {
         try {
-            const authorization = req.tokens;
+            console.log(`@lib/jwt/verify`);
+            const authorization = req.headers.tokens;
             if(!authorization) throw {message: "token was not found"};
             const decodeData = jwt.verify(authorization, "abc123");
             req.dataToken = decodeData;
+            console.log(`lewat jwt verification`);
             next();
         } catch (error) {
             next(error);
